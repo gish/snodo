@@ -20,8 +20,57 @@ define(['backbone'], function(Backbone)
 		{
 			var date;
 			date = this.get('date');
-			this.set('formattedDate', date.getDate() + "/" + date.getMonth() + "/" + (date.getYear() - 100) + " " + date.getHours() + ":" + date.getMinutes());
-		}
+			this.set('formattedDate', date.getDate() + "/" + (date.getMonth() + 1) + "/" + (date.getYear() - 100) + " " + date.getHours() + ":" + date.getMinutes());
+		},
+        setDone : function()
+        {
+            this.set('status', 'done');
+        },
+        setPending : function()
+        {
+            this.set('status', 'pending');
+        },
+        snooze : function(diff)
+        {
+            if (diff === 'later')
+            {
+                this.set('date', new Date(this.get('date').getTime() + 86400 * 1E3));
+            }
+            if (diff === 'tonight')
+            {
+                var tonight = new Date();
+                tonight = new Date(tonight.getFullYear(), tonight.getMonth(), tonight.getDay(), 17);
+                this.set('date', tonight);
+            }
+            if (diff === 'tomorrow')
+            {
+                var tomorrow        = new Date((new Date()).getTime() + 86400);
+                var tomorrowMorning = new Date(tomorrow.getFullYear(), tomorrow.getMonth(), tomorrow.getDay(), 8);
+                this.set('date', tomorrowMorning);
+            }
+            if (diff === 'nextWeek')
+            {
+                var today;
+                var monday;
+                var daysDiff;
+
+                today = new Date();
+
+                if (today.getDay() === 0)
+                {
+                    daysDiff = 1;
+                }
+                else
+                {
+                    daysDiff = 8 - today.getDay();
+                }
+
+                monday = new Date(today.getTime() + 86400 * daysDiff * 1E3);
+                monday = new Date(monday.getFullYear(), monday.getMonth(), monday.getDay(), 8);
+
+                this.set('date', monday);
+            }
+        }
 	});
 
 	return Todo;
