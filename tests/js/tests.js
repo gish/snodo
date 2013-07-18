@@ -1,8 +1,10 @@
 define([
-    'models/todo'
+    'models/todo',
+    'collections/todo'
 ],
 function(
-    Todo
+    Todo,
+    TodoCollection
 ){
     "use strict";
 
@@ -90,5 +92,60 @@ function(
         todo.snooze('nextWeek');
 
         ok(todo.get('date').getTime() === monday.getTime());
+    });
+
+    module("Todo collection");
+
+    test("Todos ordered by date", function()
+    {
+        var todos     = new TodoCollection();
+        var todoLate  = new Todo({ date : new Date(2013, 6, 14) });
+        var todoEarly = new Todo({ date : new Date(2013, 6, 13) });
+
+        todos.add(todoLate).add(todoEarly);
+        ok(todos.at(0) === todoEarly);
+    });
+
+    test("Todos reordered when snoozed", function()
+    {
+        var todos        = new TodoCollection();
+        var todoSnoozed  = new Todo({ date : new Date(2013, 6, 14) });
+        var todoEarly    = new Todo({ date : new Date(2013, 6, 13) });
+
+        todos.add(todoSnoozed).add(todoEarly);
+        todoSnoozed.snooze('tomorrow');
+
+        ok(todos.at(1) === todoSnoozed);
+    });
+
+    test("Get only pending todos", function()
+    {
+        var todos = new TodoCollection();
+        var i;
+
+        for (i = 0; i < 5; i++)
+        {
+            todos.add(new Todo());
+            todos.at(i).setDone();
+        }
+
+        todos.at(3).setPending();
+
+        ok(todos.getPending()[0] === todos.at(3));
+    });
+
+    test("Get only done todos", function()
+    {
+        var todos = new TodoCollection();
+        var i;
+
+        for (i = 0; i < 5; i++)
+        {
+            todos.add(new Todo());
+        }
+
+        todos.at(3).setDone();
+
+        ok(todos.getDone()[0] === todos.at(3));
     });
 });
