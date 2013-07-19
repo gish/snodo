@@ -1,25 +1,23 @@
-<div class="row">
-	<div class="span12">
-		<div class="well clearfix">
-			<p class="lead"><%= text %></p>
-			<div class="btn-toolbar pull-right">
-				<div class="btn-group">
-					<a class="btn btn-info dropdown-toggle" data-toggle="dropdown" href="#">
-						<%= formattedDate %>
-						<span class="caret"></span>
-					</a>
-					<ul class="dropdown-menu">
-						<li><a href="#">Senare</a></li>
-						<li><a href="#">Ikväll</a></li>
-						<li><a href="#">Imorgon</a></li>
-						<li><a href="#">Nästa vecka</a></li>
-					</ul>
-				</div>
-				<div class="btn-group">
-					<button class="btn btn-danger"><i class="icon-remove"></i></button>
-					<button class="btn btn-success"><i class="icon-ok"></i></button>
-				</div>
-			</div>
-		</div>
-	</div>
+<div class="span12">
+    <div class="well clearfix">
+        <p class="lead"><%= text %></p>
+        <div class="btn-toolbar pull-right">
+            <div class="btn-group">
+                <a class="btn btn-info dropdown-toggle" data-toggle="dropdown" href="#">
+                    <%= formattedDate %>
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#" data-snooze="later">Senare</a></li>
+                    <li><a href="#" data-snooze="tonight">Ikväll</a></li>
+                    <li><a href="#" data-snooze="tomorrow">Imorgon</a></li>
+                    <li><a href="#" data-snooze="nextWeek">Nästa vecka</a></li>
+                </ul>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-danger button-delete"><i class="icon-remove"></i></button>
+                <button class="btn btn-success button-done"><i class="icon-ok"></i></button>
+            </div>
+        </div>
+    </div>
 </div>

@@ -7,7 +7,7 @@ define(['backbone', 'models/todo'], function(Backbone, Todo)
 
         initialize : function()
         {
-            this.on('change, add', this.sort);
+            this.on('change add', this.sort);
         },
 
         // Order todos by date

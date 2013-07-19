@@ -10,6 +10,9 @@
     <script type="text/javascript" src="./js/lib/jquery/jquery.js"></script>
 	<script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" data-main="js/main.js" src="./js/lib/require/require.js"></script>
+    <script type="text/javascript">
+    	window.todos = [{text : "Köp blommor"}, {text : "Handla fisk"}, {text : "Ring snickaren om badrummet"}];
+    </script>
 </head>
 <body>
 	<div class="container">
@@ -18,30 +21,7 @@
 				<h1>Snodo</h1>
 			</div>
 		</div>
-		<div class="row">
-			<div class="span12">
-				<div class="well clearfix">
-					<p class="lead">Boka om resan till Maldiverna</p>
-					<div class="btn-toolbar pull-right">
-						<div class="btn-group">
-							<a class="btn btn-info dropdown-toggle" data-toggle="dropdown" href="#">
-								18/07/13 17:00
-								<span class="caret"></span>
-							</a>
-							<ul class="dropdown-menu">
-								<li><a href="#">Senare</a></li>
-								<li><a href="#">Ikväll</a></li>
-								<li><a href="#">Imorgon</a></li>
-								<li><a href="#">Nästa vecka</a></li>
-							</ul>
-						</div>
-						<div class="btn-group">
-							<button class="btn btn-danger"><i class="icon-remove"></i></button>
-							<button class="btn btn-success"><i class="icon-ok"></i></button>
-						</div>
-					</div>
-				</div>
-			</div>
+		<div class="todo-container">
 		</div>
 		<div class="row">
 			<div class="span12">
