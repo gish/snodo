@@ -39,13 +39,14 @@ define(['backbone'], function(Backbone)
             if (diff === 'tonight')
             {
                 var tonight = new Date();
-                tonight = new Date(tonight.getFullYear(), tonight.getMonth(), tonight.getDay(), 17);
+                console.log(tonight);
+                tonight = new Date(tonight.getFullYear(), tonight.getMonth(), tonight.getDate(), 17);
                 this.set('date', tonight);
             }
             if (diff === 'tomorrow')
             {
                 var tomorrow        = new Date((new Date()).getTime() + 86400);
-                var tomorrowMorning = new Date(tomorrow.getFullYear(), tomorrow.getMonth(), tomorrow.getDay(), 8);
+                var tomorrowMorning = new Date(tomorrow.getFullYear(), tomorrow.getMonth(), tomorrow.getDate(), 8);
                 this.set('date', tomorrowMorning);
             }
             if (diff === 'nextWeek')
@@ -66,7 +67,7 @@ define(['backbone'], function(Backbone)
                 }
 
                 monday = new Date(today.getTime() + 86400 * daysDiff * 1E3);
-                monday = new Date(monday.getFullYear(), monday.getMonth(), monday.getDay(), 8);
+                monday = new Date(monday.getFullYear(), monday.getMonth(), monday.getDate(), 8);
 
                 this.set('date', monday);
             }
