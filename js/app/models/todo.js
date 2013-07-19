@@ -46,7 +46,6 @@ define(['backbone'], function(Backbone)
             {
                 var tomorrow        = new Date((new Date()).getTime() + 86400 * 1E3);
                 var tomorrowMorning = new Date(tomorrow.getFullYear(), tomorrow.getMonth(), tomorrow.getDate(), 8);
-                console.log(tomorrow);
                 this.set('date', tomorrowMorning);
             }
             if (diff === 'nextWeek')
