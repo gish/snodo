@@ -39,14 +39,14 @@ define(['backbone'], function(Backbone)
             if (diff === 'tonight')
             {
                 var tonight = new Date();
-                console.log(tonight);
                 tonight = new Date(tonight.getFullYear(), tonight.getMonth(), tonight.getDate(), 17);
                 this.set('date', tonight);
             }
             if (diff === 'tomorrow')
             {
-                var tomorrow        = new Date((new Date()).getTime() + 86400);
+                var tomorrow        = new Date((new Date()).getTime() + 86400 * 1E3);
                 var tomorrowMorning = new Date(tomorrow.getFullYear(), tomorrow.getMonth(), tomorrow.getDate(), 8);
+                console.log(tomorrow);
                 this.set('date', tomorrowMorning);
             }
             if (diff === 'nextWeek')

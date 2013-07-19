@@ -52,8 +52,8 @@ function(
 
     test("Snoozed till tomorrow 8am", function()
     {
-        var nextDay = new Date((new Date()).getTime() + 86400);
-        var tomorrow = new Date(nextDay.getFullYear(), nextDay.getMonth(), nextDay.getDay(), 8);
+        var nextDay = new Date((new Date()).getTime() + 86400 * 1E3);
+        var tomorrow = new Date(nextDay.getFullYear(), nextDay.getMonth(), nextDay.getDate(), 8);
         var todo = new Todo();
         todo.snooze('tomorrow');
         ok(todo.get('date').getTime() === tomorrow.getTime());
@@ -65,7 +65,7 @@ function(
         var today = new Date();
         todo = new Todo();
         todo.snooze('tonight');
-        ok(todo.get('date').getTime() === new Date(today.getFullYear(), today.getMonth(), today.getDay(), 17).getTime());
+        ok(todo.get('date').getTime() === new Date(today.getFullYear(), today.getMonth(), today.getDate(), 17).getTime());
     });
 
     test("Snoozed till monday next week", function()
@@ -87,7 +87,7 @@ function(
         }
 
         monday = new Date(today.getTime() + 86400 * daysDiff * 1E3);
-        monday = new Date(monday.getFullYear(), monday.getMonth(), monday.getDay(), 8);
+        monday = new Date(monday.getFullYear(), monday.getMonth(), monday.getDate(), 8);
 
         todo.snooze('nextWeek');
 
