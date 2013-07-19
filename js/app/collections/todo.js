@@ -15,15 +15,23 @@ define(['backbone', 'models/todo'], function(Backbone, Todo)
         {
             return todo.get('date').getTime();
         },
-
+        // Get todos that are pending
         getPending : function()
         {
             return this.where({ status : 'pending' });
         },
-
+        // Get done todos
         getDone : function()
         {
             return this.where({ status : 'done' });
+        },
+        // Get todos that are pending and should be carried out
+        getExpired : function()
+        {
+            return this.filter(function(todo)
+            {
+                return todo.get('date').getTime() <= (new Date()).getTime() && todo.get('status') === 'pending';
+            });
         }
     });
 

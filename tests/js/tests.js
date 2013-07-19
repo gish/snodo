@@ -148,4 +148,15 @@ function(
 
         ok(todos.getDone()[0] === todos.at(3));
     });
+
+    test("Get only todos where date have passed", function()
+    {
+        var todos = new TodoCollection();
+        var todoA = new Todo();
+        var todoB = new Todo({date : new Date(2013,11, 31)});
+
+        todos.add(todoB).add(todoA);
+
+        ok(todos.getExpired().length === 1 && todos.getExpired()[0] === todoA);
+    });
 });
