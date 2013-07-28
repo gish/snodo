@@ -1,10 +1,11 @@
-require([
+define([
     'backbone',
     'jquery',
     'underscore',
     'models/todo',
     'collections/todo',
-    'views/todo'
+    'views/todo',
+    'views/add-form'
 ],
 function(
     Backbone,
@@ -12,7 +13,8 @@ function(
     _,
     Todo,
     TodoCollection,
-    TodoView
+    TodoView,
+    AddForm
 ){
     "use strict";
     var App = Backbone.View.extend({
@@ -23,8 +25,13 @@ function(
 
             this.todos = new TodoCollection();
 
+            this.addForm = new AddForm({ model : new Todo() });
+            $('.todo-add-form').append(this.addForm.render().$el);
+
             this.listenTo(this.todos, 'add', this.renderTodos);
             this.listenTo(this.todos, 'change', this.renderTodos);
+
+            this.listenTo(this.addForm, 'add', this.addTodo);
 
             _.each(window.todos, function(todo)
             {
@@ -40,12 +47,12 @@ function(
                 var view = new TodoView({ model : todo });
                 self.$el.append(view.render().$el);
             });
+        },
+        addTodo : function(todo)
+        {
+            this.todos.add(todo, { at : 0 });
         }
     });
 
-
-    $(document).ready(function()
-    {
-        var app = new App();
-    });
+    return App;
 });

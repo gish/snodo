@@ -9,4 +9,10 @@ requirejs.config({
 });
 
 // Load the main app module to start the app
-requirejs(["app"]);
+require(['jquery' ,'views/app'], function($, App)
+{
+    $(document).ready(function()
+    {
+        var app = new App();
+    });
+});
