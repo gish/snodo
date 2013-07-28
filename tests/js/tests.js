@@ -44,7 +44,7 @@ function(
 
     test("Snoozed till later", function()
     {
-        var later = new Date((new Date()).getTime() + 86400 * 1E3);
+        var later = new Date((new Date()).getTime() + 2*60*60 * 1E3);
         var todo  = new Todo();
         todo.snooze('later');
         ok(todo.get('date').getTime() === later.getTime());
