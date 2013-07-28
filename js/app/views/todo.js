@@ -38,6 +38,7 @@ define(['backbone', 'underscore', 'models/todo', 'text!templates/todo.phtml'], f
             var diff;
             diff = $(evt.target).data('snooze');
             this.model.snooze(diff);
+            this.model.save();
         }
     });
 

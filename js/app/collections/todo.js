@@ -1,8 +1,9 @@
-define(['backbone', 'models/todo'], function(Backbone, Todo)
+define(['backbone', 'backbone-localstorage', 'models/todo'], function(Backbone, BackboneLocalstorage, Todo)
 {
     "use strict";
 
     var TodoCollection = Backbone.Collection.extend({
+        localStorage : new Backbone.LocalStorage("todos"),
         model : Todo,
 
         initialize : function()

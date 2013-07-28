@@ -33,10 +33,7 @@ function(
 
             this.listenTo(this.addForm, 'add', this.addTodo);
 
-            _.each(window.todos, function(todo)
-            {
-                self.todos.add(new Todo(todo));
-            });
+            this.todos.fetch();
         },
         renderTodos : function()
         {
@@ -51,6 +48,7 @@ function(
         addTodo : function(todo)
         {
             this.todos.add(todo, { at : 0 });
+            todo.save();
         }
     });
 

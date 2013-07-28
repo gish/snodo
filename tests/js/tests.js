@@ -15,7 +15,7 @@ function(
 		var date          = new Date(2013, 4, 9, 17, 3);
 		var model         = new Todo({ date : date });
 		var formattedDate = model.get('formattedDate');
-		ok(formattedDate === "9/5/13 17:3");
+		ok(formattedDate === "09/05/13 17:03");
     });
 
     test("Formatted date updated when date has changed", function()
@@ -25,7 +25,7 @@ function(
 		var todo = new Todo({ date : dateOld });
 
 		todo.set('date', dateNew);
-		ok(todo.get('formattedDate') === "10/6/14 18:4");
+		ok(todo.get('formattedDate') === "10/06/14 18:04");
     });
 
     test("Marked as done has updated status", function()

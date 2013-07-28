@@ -2,10 +2,20 @@ define(['backbone'], function(Backbone)
 {
 	"use strict";
 
+    var _formatDate = function(value)
+    {
+        if (value < 10)
+        {
+            value = "0" + value;
+        }
+        return value;
+    };
+
 	var Todo = Backbone.Model.extend({
 		initialize : function()
 		{
-			this.formatDate();
+            this.loadDate();
+            this.formatDate();
             this.on('change:date', this.formatDate);
 		},
 		defaults : function()
@@ -16,11 +26,28 @@ define(['backbone'], function(Backbone)
 				status : 'pending'
 			};
 		},
+        loadDate : function()
+        {
+            var date;
+            date = this.get('date');
+            if (typeof date === 'string')
+            {
+                this.set('date', new Date(date));
+            }
+        },
 		formatDate : function()
 		{
 			var date;
+            var formatted = {};
 			date = this.get('date');
-			this.set('formattedDate', date.getDate() + "/" + (date.getMonth() + 1) + "/" + (date.getYear() - 100) + " " + date.getHours() + ":" + date.getMinutes());
+
+            formatted.day   = _formatDate(date.getDate());
+            formatted.month = _formatDate(date.getMonth() + 1);
+            formatted.year  = _formatDate(date.getYear() - 100);
+            formatted.hours = _formatDate(date.getHours());
+            formatted.minutes = _formatDate(date.getMinutes());
+
+			this.set('formattedDate', formatted.day + "/" + formatted.month + "/" + formatted.year + " " + formatted.hours + ":" + formatted.minutes);
 		},
         setDone : function()
         {
