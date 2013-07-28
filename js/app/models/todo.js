@@ -14,7 +14,6 @@ define(['backbone'], function(Backbone)
 	var Todo = Backbone.Model.extend({
 		initialize : function()
 		{
-            this.loadDate();
             this.formatDate();
             this.on('change:date', this.formatDate);
 		},
@@ -39,6 +38,7 @@ define(['backbone'], function(Backbone)
 		{
 			var date;
             var formatted = {};
+            this.loadDate();
 			date = this.get('date');
 
             formatted.day   = _formatDate(date.getDate());
