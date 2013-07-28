@@ -3,7 +3,8 @@ requirejs.config({
     "paths": {
         "jquery"     : "../lib/jquery/jquery",
         "backbone"   : "../lib/backbone/backbone",
-        "underscore" : "../lib/underscore/underscore"
+        "underscore" : "../lib/underscore/underscore",
+        "backbone-localstorage" : "../lib/backbone-localstorage/backbone.localStorage"
     },
     urlArgs: "bust=" + (new Date()).getTime()
 });

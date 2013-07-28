@@ -61,7 +61,7 @@ define(['backbone'], function(Backbone)
         {
             if (diff === 'later')
             {
-                this.set('date', new Date(this.get('date').getTime() + 2*60*60 * 1E3));
+                this.set('date', new Date((new Date()).getTime() + 2*60*60 * 1E3));
             }
             if (diff === 'tonight')
             {
