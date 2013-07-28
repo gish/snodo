@@ -41,10 +41,10 @@ define(['backbone'], function(Backbone)
             this.loadDate();
 			date = this.get('date');
 
-            formatted.day   = _formatDate(date.getDate());
-            formatted.month = _formatDate(date.getMonth() + 1);
-            formatted.year  = _formatDate(date.getYear() - 100);
-            formatted.hours = _formatDate(date.getHours());
+            formatted.day     = _formatDate(date.getDate());
+            formatted.month   = _formatDate(date.getMonth() + 1);
+            formatted.year    = _formatDate(date.getYear() - 100);
+            formatted.hours   = _formatDate(date.getHours());
             formatted.minutes = _formatDate(date.getMinutes());
 
 			this.set('formattedDate', formatted.day + "/" + formatted.month + "/" + formatted.year + " " + formatted.hours + ":" + formatted.minutes);
